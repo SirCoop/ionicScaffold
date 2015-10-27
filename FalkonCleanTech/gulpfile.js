@@ -6,12 +6,20 @@ var sass = require('gulp-sass');
 var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var sh = require('shelljs');
+var jshint = require('gulp-jshint');
 
 var paths = {
   sass: ['./scss/**/*.scss']
 };
 
 gulp.task('default', ['sass']);
+
+gulp.task('lint', function() {
+  return gulp.src('./lib/*.js')
+    .pipe(jshint({linter: 'fcs'}))
+    .pipe(jshint.reporter('default'))
+    .pipe(jshint.reporter('fail'));
+});
 
 gulp.task('sass', function(done) {
   gulp.src('./scss/ionic.app.scss')
