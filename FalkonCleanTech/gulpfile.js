@@ -8,6 +8,8 @@ var rename = require('gulp-rename');
 var sh = require('shelljs');
 var jshint = require('gulp-jshint');
 
+console.log(jshint);
+
 var paths = {
   sass: ['./scss/**/*.scss']
 };
